@@ -14,8 +14,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           appBarTheme:
               AppBarTheme(textTheme: TextTheme(headline6: AppBarTextStyle)),
-          textTheme:
-              TextTheme(button:ButtonTextStyle,headline5: InformationTextStyle)),
+          textTheme: TextTheme(
+              button: ButtonTextStyle, headline5: InformationTextStyle)),
     );
   }
 }

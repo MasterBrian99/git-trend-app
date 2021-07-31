@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gittrend/config/icons/my_flutter_app_icons.dart';
 import '../../config/themes/color_board.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -8,6 +9,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: Container(
         color: ColorBoard.PrimaryColor,
+        padding: EdgeInsets.only(top: 180),
         child: Center(
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -19,12 +21,21 @@ class HomeScreen extends StatelessWidget {
                 child: Image(image: AssetImage('assets/images/logo.png')),
               ),
               Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
-                  child:  Text('Discover the Best Trending Github Projects and Find Repository and User Information',
-              style: Theme.of(context).textTheme.headline5,textAlign: TextAlign.center,
-              ),
+                padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
+                child: Text(
+                  'Discover the Best Trending Github Projects and Find Repository and User Information',
+                  style: Theme.of(context).textTheme.headline5,
+                  textAlign: TextAlign.center,
                 ),
+              ),
               homeButtonWidget(context),
+              Container(
+                child: Row(
+                  children: [Icon(MyFlutterAppIcon.github), Text('Github')],
+                  mainAxisAlignment: MainAxisAlignment.center,
+                ),
+                margin: EdgeInsets.only(top: 40),
+              )
             ])),
       ),
     );

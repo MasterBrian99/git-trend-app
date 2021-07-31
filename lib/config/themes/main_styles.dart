@@ -8,7 +8,10 @@ const ButtonTextSize = 17.0;
 const String FontNameDefault = 'Roboto';
 
 const AppBarTextStyle = TextStyle(
-    fontWeight: FontWeight.w300, fontSize: MediumTextSize, color: Colors.white);
+    fontWeight: FontWeight.w500,
+    fontSize: MediumTextSize,
+    color: Colors.white,
+    fontFamily: FontNameDefault);
 
 const ButtonTextStyle = TextStyle(
     fontWeight: FontWeight.w800,
@@ -17,8 +20,8 @@ const ButtonTextStyle = TextStyle(
     fontFamily: FontNameDefault);
 
 const InformationTextStyle = TextStyle(
-    fontWeight: FontWeight.w600,
-    fontSize: 15.5,
-    color: Colors.white,
-    fontFamily: FontNameDefault,
-    );
+  fontWeight: FontWeight.w600,
+  fontSize: 15.5,
+  color: Colors.white,
+  fontFamily: FontNameDefault,
+);
