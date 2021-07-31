@@ -53,7 +53,7 @@ Widget setRepoItemList(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Padding(
-                      padding: EdgeInsets.all(20),
+                      padding: EdgeInsets.all(15),
                       child: Column(
                         children: [
                           Icon(
@@ -78,7 +78,7 @@ Widget setRepoItemList(
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.all(20),
+                      padding: EdgeInsets.all(15),
                       child: Column(
                         children: [
                           Icon(
@@ -103,7 +103,7 @@ Widget setRepoItemList(
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.all(20),
+                      padding: EdgeInsets.all(15),
                       child: Column(
                         children: [
                           Icon(
