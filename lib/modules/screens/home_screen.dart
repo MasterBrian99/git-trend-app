@@ -49,7 +49,6 @@ Widget getTextWidgets(List<String> strings) {
 Widget homeButtonWidget(BuildContext context) {
   const List<Map> homeButtonList = [
     {"name": "Trending Repositories"},
-    {"name": "Trending Languages"},
     {"name": "User Information"},
     {"name": "Repository Information"},
   ];
@@ -57,8 +56,10 @@ Widget homeButtonWidget(BuildContext context) {
     children: homeButtonList
         .map((item) => new Container(
             child: MaterialButton(
-              onPressed: () =>
-                  {Navigator.of(context).pushNamed('/main_screen')},
+              onPressed: () => {
+                Navigator.of(context).pushNamed('/main_screen',
+                    arguments: 'Trending Repositories')
+              },
               child: Text(
                 item['name'],
                 style: Theme.of(context).textTheme.button,

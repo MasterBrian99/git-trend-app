@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:gittrend/widgets/repo_item.dart';
-import 'package:glassmorphism/glassmorphism.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gittrend/config/themes/color_board.dart';
@@ -8,32 +7,20 @@ import 'package:http/http.dart' as http;
 import './post.dart';
 
 class MainScreen extends StatelessWidget {
+  late final Object _args;
+
+  MainScreen(Object? args) {
+    this._args = args!;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: Container(
-            child: Text('Hello'),
+            child: Text(_args.toString()),
           ),
           automaticallyImplyLeading: false,
-          actions: [
-            PopupMenuButton(
-              icon:
-                  Icon(Icons.menu), //don't specify icon if you want 3 dot menu
-              color: Colors.blue,
-              itemBuilder: (context) => [
-                PopupMenuItem(
-                  child: Text("First"),
-                  value: 'ssss',
-                ),
-                PopupMenuItem(
-                  child: Text("Second"),
-                  value: 2,
-                )
-              ],
-              onSelected: (item) => {print(item)},
-            ),
-          ],
           backgroundColor: ColorBoard.PrimaryColor,
           shadowColor: Colors.transparent,
         ),
@@ -49,19 +36,27 @@ Widget setRepoList(BuildContext context) {
           if (snapshot.hasError) {
             return Container(
               color: ColorBoard.PrimaryColor,
-              child: ErrorWidget("sss"),
+              child: Center(
+                child: CircularProgressIndicator(),
+              ),
             );
           }
           return Container(
             color: ColorBoard.PrimaryColor,
-            child: ListView(children: [setRepoItemList(context)]),
+            child: ListView(
+                children: snapshot.data!.items
+                    .map((e) => setRepoItemList(
+                        context, e.repo, e.desc, e.lang, e.stars, e.forks))
+                    .toList()),
           );
         }
         return Container(
           color: ColorBoard.PrimaryColor,
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          child: Text('ssss'),
+          child: Center(
+            child: CircularProgressIndicator(),
+          ),
         );
       });
 }
@@ -81,38 +76,3 @@ Future<Post> getPost() async {
       .get(Uri.parse('https://pacific-ridge-09843.herokuapp.com/repo'));
   return postFromJson(response.body);
 }
-
-// return Text('Title from Post JSON : ${snapshot.data!.count}');
-//
-
-/*
-
- snapshot.data!.items
-                    .map((e) => new GestureDetector(
-                          onTap: () => {},
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(
-                                vertical: 10.0, horizontal: 10.0),
-                            child: GlassmorphicContainer(
-                              width: MediaQuery.of(context).size.width,
-                              height: 200,
-                              borderRadius: 19,
-                              linearGradient: LinearGradient(colors: [
-                                ColorBoard.SecondaryColor,
-                                ColorBoard.SecondaryColor,
-                              ]),
-                              border: 0.0,
-                              blur: 120,
-                              borderGradient: LinearGradient(colors: [
-                                Colors.blue.shade200,
-                                Colors.blue.shade200
-                              ]),
-                              child: Column(
-                                children: [Text('Hellov     dddd')],
-                              ),
-                            ),
-                          ),
-                        ))
-                    .toList()
-
-                    */
